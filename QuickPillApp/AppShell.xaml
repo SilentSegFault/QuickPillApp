@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="QuickPillApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:QuickPillApp"
+    xmlns:views="clr-namespace:QuickPillApp.Presentation.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Device List"
+        ContentTemplate="{DataTemplate views:DeviceListView}"
+        Route="DeviceListView" />
+
+    <ShellContent
+        Title="Device Menu"
+        ContentTemplate="{DataTemplate views:DeviceMenuView}"
+        Route="DeviceMenuView" />
+
+    <ShellContent
+        Title="Config"
+        ContentTemplate="{DataTemplate views:PillConfigView}"
+        Route="PillConfigView" />
+
+    <ShellContent
+        Title="Schedule"
+        ContentTemplate="{DataTemplate views:ScheduleView}"
+        Route="ScheduleView" />
+
+    <ShellContent
+        Title="Add new entry"
+        ContentTemplate="{DataTemplate views:ScheduleAddView}"
+        Route="ScheduleAddView" />
+</Shell>

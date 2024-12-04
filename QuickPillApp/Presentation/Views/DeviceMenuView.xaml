@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QuickPillApp.Presentation.ViewModels"
+             x:Class="QuickPillApp.Presentation.Views.DeviceMenuView"
+             BackgroundImageSource="Resources/Images/App_background.png"
+             Title="DeviceMenuView">
+
+    <ContentPage.BindingContext>
+        <local:DeviceMenuViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding CurrentDevice.Name}"
+            FontSize="32"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <Button Text="Open pill config" Margin="10" Command="{Binding OpenConfigCommand}"/>
+        <Button Text="Open schedule" Margin="10" Command="{Binding OpenScheduleCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QuickPillApp.Presentation.ViewModels"
+             x:Class="QuickPillApp.Presentation.Views.DeviceListView"
+             BackgroundImageSource="Resources/Images/App_background.png"
+             Title="DeviceListView">
+    
+    <ContentPage.BindingContext>
+        <local:DeviceListViewModel />
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding NearbyDevices}" ItemTapped="ListView_ItemTapped" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Name}" FontSize="18" />
+                            <Label Text="{Binding Status}" Grid.Column="1" FontSize="18" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Refresh" Margin="10,30,10,0" Command="{Binding RefreshCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

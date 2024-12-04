@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QuickPillApp.Presentation.ViewModels"
+             x:Class="QuickPillApp.Presentation.Views.ScheduleAddView"
+             BackgroundImageSource="Resources/Images/App_background.png"
+             Title="ScheduleAddView">
+
+    <ContentPage.BindingContext>
+        <local:ScheduleAddViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <Grid Padding="10" x:Name="DataGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Pill to take" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Picker Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" Title="Select pill" ItemsSource="{Binding Config}" ItemDisplayBinding="{Binding PillName}" SelectedItem="{Binding SelectedPill}"/>
+
+            <Label Text="Take it for" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="0" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" Text="{Binding Period,Mode=TwoWay}" Keyboard="Numeric"/>
+            <Label Text="Days" Grid.Column="2" Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+            <Label Text="Take it every" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="1" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" Text="{Binding Frequency,Mode=TwoWay}" Keyboard="Numeric"/>
+            <Label Text="Day" Grid.Column="2" Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+            <Label Text="Take it at" Grid.Row="3" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <TimePicker Grid.Column="1" Grid.Row="3" Time="{Binding Time1, Mode=TwoWay}" Grid.ColumnSpan="2" />
+
+            <TimePicker Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Time="{Binding Time2, Mode=TwoWay}"/>
+
+            <TimePicker Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Time="{Binding Time3, Mode=TwoWay}"/>
+        </Grid>
+
+        <Button Text="Add new entry" Margin="10,30,10,0" Command="{Binding AddNewEntryCommand}"/>
+        <Button Text="Back" Margin="10" Command="{Binding BackCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

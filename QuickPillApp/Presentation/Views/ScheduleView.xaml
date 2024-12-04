@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:QuickPillApp.Presentation.ViewModels"
+             x:Class="QuickPillApp.Presentation.Views.ScheduleView"
+             BackgroundImageSource="Resources/Images/App_background.png"
+             Title="ScheduleView">
+
+    <ContentPage.BindingContext>
+        <local:ScheduleViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding DeviceName}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+        <ListView ItemsSource="{Binding Schedule}" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding PillName, StringFormat='Take {0}'}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Period, StringFormat='for {0} days'}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Frequency, StringFormat='every {0} day'}" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding TimeString, StringFormat='at {0}'}" Grid.Column="3" FontSize="10" HorizontalTextAlignment="Center"/>
+                            
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Text="Add new entry" Margin="10" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Command="{Binding AddNewEntryCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
